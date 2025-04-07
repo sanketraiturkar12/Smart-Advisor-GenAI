@@ -1,0 +1,10 @@
+yfinance
+pandas
+lxml
+flask
+pymysql
+openai
+scikit-learn
+flask-cors
+sqlalchemy
+matplotlib
