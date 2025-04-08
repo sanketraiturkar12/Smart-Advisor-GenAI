@@ -26,10 +26,13 @@ for ticker in sp500_tickers:
 
 # Connect to MySQL database
 MYSQL_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",
+    "host": "smartassistsql.mysql.database.azure.com",
+    "user": "zensar",
+    "password": "Admin@123",
     "database": "stock_sentiment_db",
+    "ssl": {
+        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+    }
 }
 
 try:

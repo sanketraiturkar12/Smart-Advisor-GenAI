@@ -32,17 +32,23 @@ client = AzureOpenAI(
 )
 
 MYSQL_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",
+    "host": "smartassistsql.mysql.database.azure.com",
+    "user": "zensar",
+    "password": "Admin@123",
     "database": "stock_sentiment_db",
+    "ssl": {
+        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+    }
 }
 
 ADDITIONAL_DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",
-    "database": "sa_test"  # The additional database
+    "host": "smartassistsql.mysql.database.azure.com",
+    "user": "zensar",
+    "password": "Admin@123",
+    "database": "sa_test",  # The additional database
+    "ssl": {
+        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+    }
 }
 
 
