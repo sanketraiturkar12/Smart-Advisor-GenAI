@@ -9,4 +9,4 @@ flask-cors
 sqlalchemy
 matplotlib
 mplfinance
-
+flask-caching

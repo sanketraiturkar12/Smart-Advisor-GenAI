@@ -12,6 +12,13 @@ import pytz
 import matplotlib
 import os
 import mplfinance as mpf
+import mysql.connector
+from urllib.parse import quote_plus
+from concurrent.futures import ThreadPoolExecutor
+
+
+
+
 
 
 
@@ -27,8 +34,8 @@ client = AzureOpenAI(
     
     api_key="m9QfxXYxdW8W0KUVxXpBkmBvzgb0cPcLf6uQm81MKzaVw7lUIGl0JQQJ99AJACYeBjFXJ3w3AAABACOGwjQW",
     api_version="2025-01-01-preview",
-    azure_endpoint="https://opneai-gpt-4o.openai.azure.com/",
-    azure_deployment="gpt-4o-mini" 
+    azure_endpoint="https://opneai-gpt-4o.openai.azure.com",
+    azure_deployment="gpt-4" 
 )
 
 MYSQL_CONFIG = {
@@ -37,7 +44,7 @@ MYSQL_CONFIG = {
     "password": "Admin@123",
     "database": "stock_sentiment_db",
     "ssl": {
-        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Ensure this path is correct
     }
 }
 
@@ -45,15 +52,28 @@ ADDITIONAL_DB_CONFIG = {
     "host": "smartassistsql.mysql.database.azure.com",
     "user": "zensar",
     "password": "Admin@123",
-    "database": "sa_test",  # The additional database
+    "database": "sa_test",
     "ssl": {
-        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Ensure this path is correct
     }
 }
 
+# MYSQL_CONFIG = {
+#     "host": "localhost",  # Change to your local MySQL server if needed
+#     "user": "root",
+#     "password": "root",
+#     "database": "stock_sentiment_db"
+# }
+
+# ADDITIONAL_DB_CONFIG = {
+#     "host": "localhost",
+#     "user": "root",
+#     "password": "root",
+#     "database": "sa_test"
+# }
 
 
-app = Flask(__name__, static_folder="charts")
+app = Flask(__name__)
 
 CORS(app)
 
@@ -62,9 +82,27 @@ def get_db_connection():
     """Establishes a connection to the MySQL database."""
     return pymysql.connect(**MYSQL_CONFIG)
 
+
+# def get_db_connection():
+#     """Establishes a secure connection to the MySQL database using mysql.connector."""
+#     try:
+#         conn = mysql.connector.connect(
+#             host="smartassistsql.mysql.database.azure.com",
+#             user="zensar",
+#             password="Admin@123",
+#             database="stock_sentiment_db",
+#             ssl_ca="C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"
+#         )
+#         print("Database connection successful!")
+#         return conn
+#     except mysql.connector.Error as err:
+#         print(f"Error: {err}")
+#         raise
+
 def get_additional_db_connection():
     """Establishes a connection to the additional MySQL database."""
     return pymysql.connect(**ADDITIONAL_DB_CONFIG)
+
 
 @app.route('/api/stock_holdings', methods=['GET'])
 def get_stock_holdings():
@@ -153,119 +191,105 @@ def get_stock_holdings():
         print(f"Error: {e}")
         return jsonify({"error": str(e)}), 500
 
-
-
 def load_stock_data(tickers=None):
     """Loads stock data from the MySQL database. Filters by tickers if provided."""
-    # Create a SQLAlchemy engine
-    engine = create_engine(f"mysql+pymysql://{MYSQL_CONFIG['user']}:{MYSQL_CONFIG['password']}@{MYSQL_CONFIG['host']}/{MYSQL_CONFIG['database']}")
+    try:
+        # URL-encode the password
+        encoded_password = quote_plus(MYSQL_CONFIG['password'])
 
-    # Build the query
-    if tickers:
-        tickers_placeholder = ', '.join([f"'{ticker}'" for ticker in tickers])
-        query = f"SELECT * FROM sp500_stock_data WHERE Ticker IN ({tickers_placeholder})"
-    else:
-        query = "SELECT * FROM sp500_stock_data"
+        # Create a SQLAlchemy engine with the corrected connection string
+        engine = create_engine(
+            f"mysql+pymysql://{MYSQL_CONFIG['user']}:{encoded_password}@{MYSQL_CONFIG['host']}/{MYSQL_CONFIG['database']}?ssl_ca={MYSQL_CONFIG['ssl']['ca']}"
+        )
+        print(f"SQLAlchemy connection string: {engine.url}")
+        
+        # engine = create_engine(
+        #     f"mysql+pymysql://{MYSQL_CONFIG['user']}:{encoded_password}@{MYSQL_CONFIG['host']}/{MYSQL_CONFIG['database']}"
+        # )
+        # print(f"SQLAlchemy connection string: {engine.url}")
 
-    # Query the database and load data into a DataFrame
-    df = pd.read_sql(query, engine)
+        # Build the query
+        if tickers:
+            tickers_placeholder = ', '.join([f"'{ticker}'" for ticker in tickers])
+            query = f"""
+                SELECT Ticker, Date, Close, Volume 
+                FROM sp500_stock_data 
+                WHERE Ticker IN ({tickers_placeholder}) 
+                AND Date >= CURDATE() - INTERVAL 30 DAY
+            """
+        else:
+            query = """
+                SELECT Ticker, Date, Close, Volume 
+                FROM sp500_stock_data 
+                WHERE Date >= CURDATE() - INTERVAL 30 DAY
+            """
 
-    # Convert the Date column to datetime with UTC
-    df["Date"] = pd.to_datetime(df["Date"], utc=True)
-
-    return df
-
-# def generate_stock_chart(data, time_period="7d"):
-#     """
-#     Generates a stock price trend graph for the specified time period.
-#     :param data: DataFrame containing stock data.
-#     :param time_period: "7d" for the past 7 days or "1m" for the last one month.
-#     :return: Base64-encoded image URL of the graph.
-#     """
-#     # Filter data based on the time period
-#     if time_period == "7d":
-#         start_date = datetime.now(pytz.utc) - timedelta(days=7)
-#     elif time_period == "1m":
-#         start_date = datetime.now(pytz.utc) - timedelta(days=30)
-#     else:
-#         raise ValueError("Invalid time_period. Use '7d' or '1m'.")
-
-#     filtered_data = data[data["Date"] >= start_date]
-
-#     # Generate the graph
-#     plt.figure(figsize=(8, 4))
-#     plt.plot(filtered_data['Date'], filtered_data['Close'], marker='o', linestyle='-', color='b', label='Closing Price')
-#     plt.xlabel('Date')
-#     plt.ylabel('Closing Price')
-#     plt.title(f'Stock Price Trend ({time_period})')
-#     plt.xticks(rotation=45)
-#     plt.legend()
-
-#     # Save the graph as a Base64-encoded image
-#     img = io.BytesIO()
-#     plt.savefig(img, format='png', bbox_inches='tight')
-#     img.seek(0)
-#     graph_url = base64.b64encode(img.getvalue()).decode('utf-8')
-#     plt.close()
-#     return f"data:image/png;base64,{graph_url}"
-
+        # Query the database and load data into a DataFrame
+        df = pd.read_sql(query, engine)
+        print("Data loaded successfully!")
+        return df
+    except Exception as e:
+        print(f"Error loading stock data: {e}")
+        raise
+    
 
 def generate_stock_chart(data, time_period="7d"):
-    """
-    Generates a simple stock price trend line graph for the specified time period.
-    :param data: DataFrame containing stock data with 'Date' and 'Close' columns.
-    :param time_period: "7d" for the past 7 days or "1m" for the last one month.
-    :return: Base64-encoded image URL of the line graph.
-    """
-    # Filter data based on the time period
-    if time_period == "7d":
-        start_date = datetime.now(pytz.utc) - timedelta(days=7)
-    elif time_period == "1m":
-        start_date = datetime.now(pytz.utc) - timedelta(days=30)
-    else:
-        raise ValueError("Invalid time_period. Use '7d' or '1m'.")
+    try:
+        print("Starting chart generation...")
+        # Ensure the 'Date' column is in datetime format
+        data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
+        print("Date column converted to datetime.")
 
-    filtered_data = data[data["Date"] >= start_date]
+        # Remove rows with invalid dates
+        data = data.dropna(subset=['Date'])
+        print(f"Data after dropping invalid dates: {data.shape}")
 
-    # Ensure the DataFrame has the required columns for a line graph
-    required_columns = {"Date", "Close"}
-    if not required_columns.issubset(filtered_data.columns):
-        raise ValueError(f"Data must contain the following columns: {required_columns}")
+        # Ensure the 'Date' column is timezone-aware
+        if data['Date'].dt.tz is None:
+            data['Date'] = data['Date'].dt.tz_localize(pytz.utc)
+        print("Date column localized to UTC.")
 
-    # Generate the line graph
-    plt.figure(figsize=(10, 6))  # Larger figure size for better readability
-    plt.plot(
-        filtered_data['Date'], 
-        filtered_data['Close'], 
-        marker='o',  # Add markers to highlight data points
-        linestyle='-',  # Solid line style
-        color='#1f77b4',  # Professional blue color
-        linewidth=2  # Line thickness
-    )
+        # Filter data based on the time period
+        if time_period == "7d":
+            start_date = datetime.now(pytz.utc) - timedelta(days=7)
+        elif time_period == "1m":
+            start_date = datetime.now(pytz.utc) - timedelta(days=30)
+        else:
+            raise ValueError("Invalid time_period. Use '7d' or '1m'.")
 
-    # Add gridlines for better readability
-    plt.grid(color='gray', linestyle='--', linewidth=0.5, alpha=0.7)
+        filtered_data = data[data["Date"] >= start_date]
+        print(f"Filtered data: {filtered_data.shape}")
 
-    # Add labels and title with improved styling
-    plt.xlabel('Date', fontsize=12, fontweight='bold')
-    plt.ylabel('Closing Price (USD)', fontsize=12, fontweight='bold')
-    plt.title(f'Stock Price Trend ({time_period})', fontsize=14, fontweight='bold', color='#333')
+        # Check if filtered data is empty
+        if filtered_data.empty:
+            raise ValueError(f"No data available for the specified time period: {time_period}")
 
-    # Format the x-axis for better date representation
-    plt.xticks(rotation=45, fontsize=10)
-    plt.yticks(fontsize=10)
+        # Remove duplicates by keeping the last Close price for each Date
+        filtered_data = filtered_data.sort_values('Date').drop_duplicates('Date', keep='last')
+        print(f"Data after removing duplicates: {filtered_data.shape}")
 
-    # Add a light background for better contrast
-    plt.gca().set_facecolor('#f9f9f9')
+        # Generate the graph
+        plt.figure(figsize=(10, 5))
+        plt.plot(filtered_data['Date'], filtered_data['Close'], marker='o', linestyle='-', color='b', label='Closing Price')
+        plt.xlabel('Date')
+        plt.ylabel('Closing Price')
+        plt.title(f'Stock Price Trend ({time_period})')
+        plt.grid(False)
+        plt.xticks(rotation=45)
+        plt.legend()
+        plt.tight_layout()
 
-    # Save the graph as a Base64-encoded image
-    img = io.BytesIO()
-    plt.savefig(img, format='png', bbox_inches='tight', dpi=300)  # High DPI for better quality
-    img.seek(0)
-    graph_url = base64.b64encode(img.getvalue()).decode('utf-8')
-    plt.close()
-
-    return f"data:image/png;base64,{graph_url}"
+        # Save the graph as a Base64-encoded image
+        img = io.BytesIO()
+        plt.savefig(img, format='png', bbox_inches='tight')
+        img.seek(0)
+        graph_url = base64.b64encode(img.getvalue()).decode('utf-8')
+        plt.close()
+        print("Chart generation completed successfully.")
+        return f"data:image/png;base64,{graph_url}"
+    except Exception as e:
+        print(f"Error during chart generation: {e}")
+        raise
 
 # --- Trend Calculation ---
 def calculate_trend(data):
@@ -292,7 +316,7 @@ def analyze_sentiment(trend, volume_change):
     """
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4",
         messages=[{"role": "system", "content": "You are a financial sentiment analysis assistant."},
                   {"role": "user", "content": prompt}]
     )
@@ -303,7 +327,8 @@ def analyze_sentiment(trend, volume_change):
     return sentiment.strip()
 
 
-# --- API: Get Stock Sentiment ---
+
+
 @app.route("/api/stock_sentiment", methods=["GET"])
 def get_stock_sentiment():
     """Returns sentiment for a specific stock based on price trends and volume."""
@@ -331,6 +356,10 @@ def get_stock_sentiment():
     else:
         return jsonify({"error": "Invalid time_range. Use '7d' or '1m'."}), 400
 
+    # Ensure the Date column is in datetime format and timezone-aware
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce").dt.tz_localize("UTC")  # Convert to timezone-aware
+
+    # Filter the DataFrame
     df = df[df["Date"] >= start_date]
     print(f"Data after filtering by time range ({time_range}):\n{df}")  # Debug: Print filtered data by time range
 
@@ -345,9 +374,15 @@ def get_stock_sentiment():
 
     latest_data = df.iloc[-1]  # Safely access the last row
 
-    # Analyze sentiment and generate the stock chart
-    sentiment = analyze_sentiment(latest_data["Trend"], latest_data["Volume"])
-    graph = generate_stock_chart(df, time_period=time_range)
+    # Use ThreadPoolExecutor to run tasks in parallel
+    with ThreadPoolExecutor() as executor:
+        # Submit tasks to the executor
+        sentiment_future = executor.submit(analyze_sentiment, latest_data["Trend"], latest_data["Volume"])
+        chart_future = executor.submit(generate_stock_chart, df, time_period=time_range)
+
+        # Wait for both tasks to complete
+        sentiment = sentiment_future.result()
+        graph = chart_future.result()
 
     return jsonify({
         "symbol": symbol,
@@ -368,7 +403,7 @@ def get_stock_sentiment():
 
 # --- API: Compare Stocks ---
 
-def generate_comparison_chart(stock_data, time_period="7d",output_dir="charts"):
+def generate_comparison_chart(stock_data, time_period="7d"):
     """
     Generates a multi-line stock comparison chart for the specified time period.
     :param stock_data: Dictionary where keys are tickers and values are DataFrames containing stock data.
@@ -383,28 +418,54 @@ def generate_comparison_chart(stock_data, time_period="7d",output_dir="charts"):
     else:
         raise ValueError("Invalid time_period. Use '7d' or '1m'.")
 
-    plt.figure(figsize=(8, 4))
+    plt.figure(figsize=(10, 6))  # Larger figure size for better readability
 
     # Filter data and plot for each ticker
     for ticker, data in stock_data.items():
-        filtered_data = data[data["Date"] >= start_date]
-        plt.plot(filtered_data['Date'], filtered_data['Close'], marker='o', linestyle='-', label=ticker)
+        # Ensure the 'Date' column is in datetime format
+        data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 
-    plt.xlabel('Date')
-    plt.ylabel('Closing Price')
-    plt.title(f'Stock Comparison ({time_period})')
-    plt.xticks(rotation=45)
-    plt.legend()
+        # Ensure the 'Date' column is timezone-aware
+        if data['Date'].dt.tz is None:
+            data['Date'] = data['Date'].dt.tz_localize(pytz.utc)
+
+        # Filter data based on the time period
+        filtered_data = data[data["Date"] >= start_date]
+
+        # Check if filtered data is empty
+        if filtered_data.empty:
+            raise ValueError(f"No data available for ticker {ticker} in the specified time period: {time_period}")
+
+        # Remove duplicates by keeping the last Close price for each Date
+        filtered_data = filtered_data.sort_values('Date').drop_duplicates('Date', keep='last')
+
+        # Plot the data
+        plt.plot(
+            filtered_data['Date'],
+            filtered_data['Close'],
+            marker='o',
+            linestyle='-',
+            label=ticker
+        )
+
+    # Add labels, title, and legend
+    plt.xlabel('Date', fontsize=12, fontweight='bold')
+    plt.ylabel('Closing Price (USD)', fontsize=12, fontweight='bold')
+    plt.title(f'Stock Comparison ({time_period})', fontsize=14, fontweight='bold')
+    plt.xticks(rotation=45, fontsize=10)
+    plt.yticks(fontsize=10)
+    plt.legend(loc='upper left', fontsize=10, frameon=True, shadow=True, borderpad=1)
+    plt.grid(False)
+    plt.tight_layout()
 
     # Save the graph as a Base64-encoded image
     img = io.BytesIO()
-    plt.savefig(img, format='png', bbox_inches='tight')
+    plt.savefig(img, format='png', bbox_inches='tight', dpi=300)  # High DPI for better quality
     img.seek(0)
     graph_url = base64.b64encode(img.getvalue()).decode('utf-8')
     plt.close()
 
     return f"data:image/png;base64,{graph_url}"
-
 
 @app.route('/api/stock_comparison', methods=['POST'])
 def stock_comparison():
@@ -461,22 +522,36 @@ def stock_comparison():
         'comparison_chart': comparison_chart,
     })
     
-# --- API: Get Market Sentiment ---
+
 @app.route("/api/market_sentiment", methods=["GET"])
 def get_market_sentiment():
-    """Calculates overall market sentiment based on aggregated stock trends."""
+    """Returns market sentiment based on stock trends and volume."""
     time_range = request.args.get("time_range", "7d")  # Default to 7 days if not provided
 
-    # Validate time_range
+    # Load stock data
+    df = load_stock_data()
+    print(df.head())  # Debug: Print the first few rows of the DataFrame
+
+    # Filter data based on the time range
     if time_range == "7d":
-        start_date = datetime.now(pytz.utc) - timedelta(days=7)
+        start_date = (datetime.now(pytz.utc) - timedelta(days=7)).replace(tzinfo=None)  # Remove timezone
     elif time_range == "1m":
-        start_date = datetime.now(pytz.utc) - timedelta(days=30)
+        start_date = (datetime.now(pytz.utc) - timedelta(days=30)).replace(tzinfo=None)  # Remove timezone
     else:
         return jsonify({"error": "Invalid time_range. Use '7d' or '1m'."}), 400
 
-    df = load_stock_data()
+    # Ensure the Date column is in datetime format
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")  # Convert Date column to datetime
+
+    # Filter the DataFrame
     df = df[df["Date"] >= start_date]
+    print(f"Data after filtering by time range ({time_range}):\n{df}")  # Debug: Print filtered data by time range
+
+    # Check if the DataFrame is empty after filtering
+    if df.empty:
+        return jsonify({"error": f"No data available for the specified time range ({time_range})."}), 404
+
+    # Calculate market sentiment
     df = calculate_trend(df)
 
     positive = sum(1 for _, row in df.iterrows() if "Upward" in row["Trend"])
@@ -512,6 +587,8 @@ def get_market_sentiment():
     #     "neutral": neutral_pct,
     #     "overall_sentiment": market_sentiment
     # })
+    
+    
 # --- API: Get All Tickers ---
 @app.route("/api/tickers", methods=["GET"])
 def get_all_tickers():
