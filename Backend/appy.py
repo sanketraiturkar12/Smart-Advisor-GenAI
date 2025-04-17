@@ -1,4 +1,9 @@
 from flask import Flask, jsonify, request
+from PyPDF2 import PdfReader
+from docx import Document
+import psycopg2
+from psycopg2.extras import Json
+from langchain.chains import create_retrieval_chain
 from flask_cors import CORS
 import pymysql
 from sqlalchemy import create_engine
@@ -15,10 +20,12 @@ import mplfinance as mpf
 import mysql.connector
 from urllib.parse import quote_plus
 from concurrent.futures import ThreadPoolExecutor
+from upload import upload_report, query_analysis, app as upload_app  # Import the upload_report function and app
 
+from dotenv import load_dotenv  # Import dotenv to load environment variables
 
-
-
+# Load environment variables from .env file
+load_dotenv()
 
 
 
@@ -26,17 +33,14 @@ from concurrent.futures import ThreadPoolExecutor
 matplotlib.use('Agg')
 
 
-
-
-
 # --- Configuration ---
 client = AzureOpenAI(
-    
-    api_key="m9QfxXYxdW8W0KUVxXpBkmBvzgb0cPcLf6uQm81MKzaVw7lUIGl0JQQJ99AJACYeBjFXJ3w3AAABACOGwjQW",
-    api_version="2025-01-01-preview",
-    azure_endpoint="https://opneai-gpt-4o.openai.azure.com",
-    azure_deployment="gpt-4" 
+    api_key=os.environ["AZURE_CHAT_API_KEY"],
+    api_version=os.environ["AZURE_CHAT_API_VERSION"],
+    azure_endpoint=os.environ["AZURE_CHAT_ENDPOINT"],
+    azure_deployment=os.environ["AZURE_CHAT_DEPLOYMENT"]
 )
+
 
 MYSQL_CONFIG = {
     "host": "smartassistsql.mysql.database.azure.com",
@@ -75,7 +79,11 @@ ADDITIONAL_DB_CONFIG = {
 
 app = Flask(__name__)
 
+# Copy configurations from upload.py's app
+app.config.update(upload_app.config)
+
 CORS(app)
+
 
 # --- Database Connection ---
 def get_db_connection():
@@ -596,6 +604,15 @@ def get_all_tickers():
     df = load_stock_data()
     tickers = df["Ticker"].unique().tolist()
     return jsonify({"tickers": tickers})
+
+# Register the upload_report route
+@app.route('/upload', methods=['POST'])
+def upload():
+    return upload_report()
+
+@app.route('/query_analysis', methods=['GET'])
+def query():
+    return query_analysis()
 
 # --- Home Route ---
 @app.route("/")
