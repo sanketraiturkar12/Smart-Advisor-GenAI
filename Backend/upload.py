@@ -310,7 +310,7 @@ def run_agent_analysis(ticker, collection_name, company_name, document_text):
 Using the tools available (quarterly report + latest news), analyze the following:
 1. What is the overall sentiment (positive, neutral, negative)?
 2. Summarize quarterly report highlights for {company_name}.
-3. Summarize the latest news and its sentiment.
+3. Summarize the latest news summary and sentiment.
 4. Final recommendation: Buy / Hold / Sell? Justify.
 """
     result = agent.invoke(final_prompt)
@@ -324,6 +324,8 @@ Using the tools available (quarterly report + latest news), analyze the followin
         text = re.sub(r'\s*\n(\d+)', r' \1', text)
         # Replace multiple spaces with a single space
         text = re.sub(r'\s+', ' ', text)
+        # Remove dashes (-)
+        text = re.sub(r'-', ' ', text)
         return text.strip()
 
     if isinstance(result, dict):

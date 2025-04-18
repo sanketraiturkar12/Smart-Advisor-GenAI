@@ -2,6 +2,11 @@ import yfinance as yf
 import pandas as pd
 import mysql.connector
 import pymysql
+import os  # Import os to access environment variables
+from dotenv import load_dotenv  # Import dotenv to load environment variables
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Fetch the list of S&P 500 companies
 sp500_tickers = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]['Symbol'].tolist()
@@ -31,7 +36,7 @@ MYSQL_CONFIG = {
     "password": "Admin@123",
     "database": "stock_sentiment_db",
     "ssl": {
-        "ca": "C:/Users/SR76875/Downloads/DigiCertGlobalRootCA.crt.pem"  # Update this path to the CA certificate
+        "ca": os.getenv("MYSQL_SSL_CA")  # Load CA certificate path from .env
     }
 }
 
