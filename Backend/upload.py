@@ -183,6 +183,7 @@ Respond with only the company name.
     logging.info(f"Step 2 Complete: Company name extracted -> {company_name}")
     return company_name
 
+
 def get_ticker(company_name):
     """
     Fetch the ticker symbol for a company using Yahoo Finance API.
@@ -194,16 +195,18 @@ def get_ticker(company_name):
         str: The ticker symbol of the company, or None if not found.
     """
     logging.info(f"Fetching ticker for company: {company_name}...")
-    yfinance = "https://query2.finance.yahoo.com/v1/finance/search"
+    yfinance_url = "https://query2.finance.yahoo.com/v1/finance/search"
     params = {"q": company_name, "quotes_count": 1, "country": "United States"}
 
-    retries = 3
-    for attempt in range(retries):
+    retries = 5  # Number of retries
+    backoff_factor = 2  # Exponential backoff factor
+    for attempt in range(1, retries + 1):
         try:
-            res = requests.get(url=yfinance, params=params, headers={'User-Agent': USER_AGENT}, timeout=30)
-            res.raise_for_status()
-            data = res.json()
+            res = requests.get(url=yfinance_url, params=params, headers={'User-Agent': 'Mozilla/5.0'}, timeout=30)
+            res.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
 
+            # Parse the response JSON
+            data = res.json()
             if "quotes" in data and len(data["quotes"]) > 0:
                 company_code = data['quotes'][0]['symbol']
                 logging.info(f"Ticker found for {company_name}: {company_code}")
@@ -211,12 +214,21 @@ def get_ticker(company_name):
             else:
                 logging.warning(f"No ticker found for {company_name}.")
                 return None
-        except requests.exceptions.RequestException as e:
-            logging.error(f"Attempt {attempt + 1} failed: {e}")
-            if attempt < retries - 1:
-                time.sleep(2 ** attempt)  # Exponential backoff
+
+        except requests.exceptions.HTTPError as e:
+            if res.status_code == 429:  # Too Many Requests
+                wait_time = backoff_factor ** attempt  # Exponential backoff
+                logging.warning(f"Rate limit hit. Retrying in {wait_time} seconds... (Attempt {attempt}/{retries})")
+                time.sleep(wait_time)
             else:
+                logging.error(f"HTTP error occurred: {e}")
                 raise
+        except requests.exceptions.RequestException as e:
+            logging.error(f"Request failed: {e}")
+            raise
+
+    logging.error(f"Failed to fetch ticker for {company_name} after {retries} retries.")
+    return None
 
 def fetch_company_news_with_agent(company_name):
     """
@@ -382,6 +394,11 @@ def upload_report():
 
         # Extract the company name from the document
         company_name = extract_company_name(text)
+        
+        # List of companies to process
+        companies = [company_name]  # Add more company names to this list if needed
+        for company in companies:
+            time.sleep(1)  # Add a 1-second delay between requests
 
         # Fetch the ticker symbol for the extracted company name
         ticker = get_ticker(company_name)

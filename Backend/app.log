@@ -1,0 +1,318 @@
+[2025-04-28 17:55:55,543] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-28 17:55:55,570] INFO - [33mPress CTRL+C to quit[0m
+[2025-04-28 17:55:55,592] INFO -  * Restarting with stat
+[2025-04-28 17:56:21,719] WARNING -  * Debugger is active!
+[2025-04-28 17:56:21,737] INFO -  * Debugger PIN: 225-262-084
+[2025-04-28 17:57:23,504] INFO - 127.0.0.1 - - [28/Apr/2025 17:57:23] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 17:57:38,607] INFO - 127.0.0.1 - - [28/Apr/2025 17:57:38] "GET /api/stock_holdings?client_id=5 HTTP/1.1" 200 -
+[2025-04-28 17:57:56,106] INFO - 127.0.0.1 - - [28/Apr/2025 17:57:56] "GET /api/tickers HTTP/1.1" 200 -
+[2025-04-28 17:58:04,759] INFO - 127.0.0.1 - - [28/Apr/2025 17:58:04] "[33mGET /api/market_sentiment?time_range=7d HTTP/1.1[0m" 404 -
+[2025-04-28 18:11:25,377] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-28 18:11:25,380] INFO - [33mPress CTRL+C to quit[0m
+[2025-04-28 18:11:25,385] INFO -  * Restarting with stat
+[2025-04-28 18:11:36,862] WARNING -  * Debugger is active!
+[2025-04-28 18:11:36,869] INFO -  * Debugger PIN: 225-262-084
+[2025-04-28 18:13:18,593] INFO - 127.0.0.1 - - [28/Apr/2025 18:13:18] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:13:29,964] INFO - 127.0.0.1 - - [28/Apr/2025 18:13:29] "GET /api/tickers HTTP/1.1" 200 -
+[2025-04-28 18:13:45,405] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-04-28 18:13:45,439] INFO - 127.0.0.1 - - [28/Apr/2025 18:13:45] "GET /api/stock_sentiment?symbol=GOOG&time_range=1m HTTP/1.1" 200 -
+[2025-04-28 18:13:49,422] INFO - 127.0.0.1 - - [28/Apr/2025 18:13:49] "GET /query_analysis?ticker=GOOG HTTP/1.1" 200 -
+[2025-04-28 18:14:02,908] INFO - 127.0.0.1 - - [28/Apr/2025 18:14:02] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:14:14,875] INFO - 127.0.0.1 - - [28/Apr/2025 18:14:14] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:32:21,188] INFO - 127.0.0.1 - - [28/Apr/2025 18:32:21] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:34:57,477] INFO - 127.0.0.1 - - [28/Apr/2025 18:34:57] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:35:20,344] INFO - 127.0.0.1 - - [28/Apr/2025 18:35:20] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:35:52,575] INFO - 127.0.0.1 - - [28/Apr/2025 18:35:52] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:36:37,119] INFO - 127.0.0.1 - - [28/Apr/2025 18:36:37] "GET /api/stock_holdings?client_id=5 HTTP/1.1" 200 -
+[2025-04-28 18:36:48,197] INFO - 127.0.0.1 - - [28/Apr/2025 18:36:48] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 18:37:13,097] INFO - 127.0.0.1 - - [28/Apr/2025 18:37:13] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:06:27,853] INFO - 127.0.0.1 - - [28/Apr/2025 19:06:27] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:06:51,055] INFO - 127.0.0.1 - - [28/Apr/2025 19:06:51] "GET /api/stock_holdings?client_id=5 HTTP/1.1" 200 -
+[2025-04-28 19:07:06,954] INFO - 127.0.0.1 - - [28/Apr/2025 19:07:06] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:15:40,306] INFO - 127.0.0.1 - - [28/Apr/2025 19:15:40] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:17:43,967] INFO - 127.0.0.1 - - [28/Apr/2025 19:17:43] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:18:51,408] INFO - 127.0.0.1 - - [28/Apr/2025 19:18:51] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:19:22,062] INFO - 127.0.0.1 - - [28/Apr/2025 19:19:22] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:41:50,531] INFO - 127.0.0.1 - - [28/Apr/2025 19:41:50] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:43:06,346] INFO - 127.0.0.1 - - [28/Apr/2025 19:43:06] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:43:38,706] INFO - 127.0.0.1 - - [28/Apr/2025 19:43:38] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:43:56,421] INFO - 127.0.0.1 - - [28/Apr/2025 19:43:56] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:44:45,018] INFO - 127.0.0.1 - - [28/Apr/2025 19:44:45] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:45:22,814] INFO - 127.0.0.1 - - [28/Apr/2025 19:45:22] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:52:11,423] INFO - 127.0.0.1 - - [28/Apr/2025 19:52:11] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:52:53,567] INFO - 127.0.0.1 - - [28/Apr/2025 19:52:53] "GET /api/stock_holdings?client_id=5 HTTP/1.1" 200 -
+[2025-04-28 19:52:57,231] INFO - 127.0.0.1 - - [28/Apr/2025 19:52:57] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:55:17,207] INFO - 127.0.0.1 - - [28/Apr/2025 19:55:17] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 19:56:14,237] INFO - 127.0.0.1 - - [28/Apr/2025 19:56:14] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:17:09,149] INFO - 127.0.0.1 - - [28/Apr/2025 20:17:09] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:17:48,406] INFO - 127.0.0.1 - - [28/Apr/2025 20:17:48] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:19:19,678] INFO - 127.0.0.1 - - [28/Apr/2025 20:19:19] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:26:04,730] INFO - 127.0.0.1 - - [28/Apr/2025 20:26:04] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:31:46,606] INFO - 127.0.0.1 - - [28/Apr/2025 20:31:46] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:35:16,215] INFO - 127.0.0.1 - - [28/Apr/2025 20:35:16] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:40:30,842] INFO - 127.0.0.1 - - [28/Apr/2025 20:40:30] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:42:29,479] INFO - 127.0.0.1 - - [28/Apr/2025 20:42:29] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:43:24,244] INFO - 127.0.0.1 - - [28/Apr/2025 20:43:24] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:44:54,292] INFO - 127.0.0.1 - - [28/Apr/2025 20:44:54] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:45:27,038] INFO - 127.0.0.1 - - [28/Apr/2025 20:45:27] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:46:03,281] INFO - 127.0.0.1 - - [28/Apr/2025 20:46:03] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-28 20:50:07,807] INFO - 127.0.0.1 - - [28/Apr/2025 20:50:07] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 10:41:12,628] INFO - 127.0.0.1 - - [29/Apr/2025 10:41:12] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 11:09:52,267] INFO - 127.0.0.1 - - [29/Apr/2025 11:09:52] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 13:23:16,060] INFO - 127.0.0.1 - - [29/Apr/2025 13:23:16] "GET /api/stock_holdings?client_id=77 HTTP/1.1" 200 -
+[2025-04-29 15:50:50,870] INFO - 127.0.0.1 - - [29/Apr/2025 15:50:50] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 16:43:22,463] INFO - 127.0.0.1 - - [29/Apr/2025 16:43:22] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 16:43:33,878] INFO - 127.0.0.1 - - [29/Apr/2025 16:43:33] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 17:46:11,485] INFO - 127.0.0.1 - - [29/Apr/2025 17:46:11] "[35m[1mGET /api/stock_holdings?client_id=1 HTTP/1.1[0m" 500 -
+[2025-04-29 17:48:03,047] INFO - 127.0.0.1 - - [29/Apr/2025 17:48:03] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-29 18:25:38,421] INFO - 127.0.0.1 - - [29/Apr/2025 18:25:38] "GET /api/stock_holdings?client_id=5 HTTP/1.1" 200 -
+[2025-04-29 18:25:58,918] INFO - 127.0.0.1 - - [29/Apr/2025 18:25:58] "GET /api/tickers HTTP/1.1" 200 -
+[2025-04-29 18:26:13,847] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-04-29 18:26:13,885] INFO - 127.0.0.1 - - [29/Apr/2025 18:26:13] "GET /api/stock_sentiment?symbol=GOOG&time_range=1m HTTP/1.1" 200 -
+[2025-04-29 18:26:18,956] INFO - 127.0.0.1 - - [29/Apr/2025 18:26:18] "GET /query_analysis?ticker=GOOG HTTP/1.1" 200 -
+[2025-04-29 18:47:39,848] INFO - 127.0.0.1 - - [29/Apr/2025 18:47:39] "[35m[1mGET /api/market_sentiment?time_range=7d HTTP/1.1[0m" 500 -
+[2025-04-29 18:47:39,856] INFO - 127.0.0.1 - - [29/Apr/2025 18:47:39] "[35m[1mGET /api/market_sentiment?time_range=7d HTTP/1.1[0m" 500 -
+[2025-04-30 15:42:50,507] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-30 15:42:50,508] INFO - [33mPress CTRL+C to quit[0m
+[2025-04-30 15:42:50,513] INFO -  * Restarting with stat
+[2025-04-30 15:43:08,890] WARNING -  * Debugger is active!
+[2025-04-30 15:43:08,901] INFO -  * Debugger PIN: 225-262-084
+[2025-04-30 16:03:58,965] INFO - 127.0.0.1 - - [30/Apr/2025 16:03:58] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 16:03:59,740] INFO - 127.0.0.1 - - [30/Apr/2025 16:03:59] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 16:04:04,516] INFO - 127.0.0.1 - - [30/Apr/2025 16:04:04] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 16:06:14,933] INFO - 127.0.0.1 - - [30/Apr/2025 16:06:14] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 16:38:50,108] INFO - 127.0.0.1 - - [30/Apr/2025 16:38:50] "GET /api/stock_holdings?client_id=73 HTTP/1.1" 200 -
+[2025-04-30 16:41:29,432] INFO - 127.0.0.1 - - [30/Apr/2025 16:41:29] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 16:42:22,221] INFO - 127.0.0.1 - - [30/Apr/2025 16:42:22] "GET /api/market_sentiment?time_range=7d HTTP/1.1" 200 -
+[2025-04-30 16:42:46,905] INFO - 127.0.0.1 - - [30/Apr/2025 16:42:46] "GET /api/market_sentiment?time_range=1m HTTP/1.1" 200 -
+[2025-04-30 16:43:07,585] INFO - 127.0.0.1 - - [30/Apr/2025 16:43:07] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 17:46:07,832] INFO - 127.0.0.1 - - [30/Apr/2025 17:46:07] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 18:34:44,533] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-04-30 18:34:44,550] INFO - [33mPress CTRL+C to quit[0m
+[2025-04-30 18:34:44,599] INFO -  * Restarting with stat
+[2025-04-30 18:35:08,797] WARNING -  * Debugger is active!
+[2025-04-30 18:35:08,806] INFO -  * Debugger PIN: 225-262-084
+[2025-04-30 18:35:11,328] INFO - 127.0.0.1 - - [30/Apr/2025 18:35:11] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 18:53:21,692] INFO - 127.0.0.1 - - [30/Apr/2025 18:53:21] "GET /api/tickers HTTP/1.1" 200 -
+[2025-04-30 18:53:33,838] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-04-30 18:53:33,854] INFO - 127.0.0.1 - - [30/Apr/2025 18:53:33] "GET /api/stock_sentiment?symbol=GOOG&time_range=1m HTTP/1.1" 200 -
+[2025-04-30 18:53:39,802] INFO - 127.0.0.1 - - [30/Apr/2025 18:53:39] "GET /query_analysis?ticker=GOOG HTTP/1.1" 200 -
+[2025-04-30 18:53:56,778] INFO - 127.0.0.1 - - [30/Apr/2025 18:53:56] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 19:40:34,368] INFO - 127.0.0.1 - - [30/Apr/2025 19:40:34] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 19:41:44,101] INFO - 127.0.0.1 - - [30/Apr/2025 19:41:44] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 19:43:01,636] INFO - 127.0.0.1 - - [30/Apr/2025 19:43:01] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 20:02:45,129] INFO - 127.0.0.1 - - [30/Apr/2025 20:02:45] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 20:28:17,366] INFO - 127.0.0.1 - - [30/Apr/2025 20:28:17] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 20:43:18,663] INFO - 127.0.0.1 - - [30/Apr/2025 20:43:18] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 20:56:06,324] INFO - 127.0.0.1 - - [30/Apr/2025 20:56:06] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 21:18:27,146] INFO - 127.0.0.1 - - [30/Apr/2025 21:18:27] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-04-30 21:31:31,152] INFO - 127.0.0.1 - - [30/Apr/2025 21:31:31] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-05-12 10:59:46,541] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-05-12 10:59:46,542] INFO - [33mPress CTRL+C to quit[0m
+[2025-05-12 10:59:46,544] INFO -  * Restarting with stat
+[2025-05-12 11:00:05,485] WARNING -  * Debugger is active!
+[2025-05-12 11:00:05,485] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 11:27:24,300] INFO - 127.0.0.1 - - [12/May/2025 11:27:24] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-05-12 11:38:52,733] INFO - 127.0.0.1 - - [12/May/2025 11:38:52] "GET /api/tickers HTTP/1.1" 200 -
+[2025-05-12 11:39:06,982] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 11:39:07,088] INFO - 127.0.0.1 - - [12/May/2025 11:39:07] "GET /api/stock_sentiment?symbol=GOOG&time_range=1m HTTP/1.1" 200 -
+[2025-05-12 11:39:13,821] INFO - 127.0.0.1 - - [12/May/2025 11:39:13] "GET /query_analysis?ticker=GOOG HTTP/1.1" 200 -
+[2025-05-12 11:44:41,893] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 11:44:41,898] INFO - 127.0.0.1 - - [12/May/2025 11:44:41] "GET /api/stock_sentiment?symbol=AAPL&time_range=1m HTTP/1.1" 200 -
+[2025-05-12 11:44:47,635] INFO - 127.0.0.1 - - [12/May/2025 11:44:47] "GET /query_analysis?ticker=AAPL HTTP/1.1" 200 -
+[2025-05-12 11:45:52,320] INFO - 127.0.0.1 - - [12/May/2025 11:45:52] "GET /api/stock_holdings?client_id=1 HTTP/1.1" 200 -
+[2025-05-12 14:58:10,769] INFO - 127.0.0.1 - - [12/May/2025 14:58:10] "GET /api/tickers HTTP/1.1" 200 -
+[2025-05-12 14:58:14,589] INFO - ============================================================
+[2025-05-12 14:58:14,589] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 14:58:14,590] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 14:58:16,418] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 14:58:16,418] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 14:58:17,652] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 14:58:17,699] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 14:58:17,704] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 14:58:17,942] ERROR - Attempt 1 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 14:58:19,189] ERROR - Attempt 2 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 14:58:21,376] ERROR - Attempt 3 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 14:58:21,376] ERROR - ERROR: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 14:58:21,378] INFO - 127.0.0.1 - - [12/May/2025 14:58:21] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 15:08:22,349] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 15:08:23,487] INFO -  * Restarting with stat
+[2025-05-12 15:08:38,478] WARNING -  * Debugger is active!
+[2025-05-12 15:08:38,484] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 15:09:18,121] INFO - ============================================================
+[2025-05-12 15:09:18,122] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 15:09:18,122] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 15:09:18,826] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 15:09:18,826] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 15:09:20,684] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 15:09:20,722] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 15:09:20,722] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 15:09:21,222] ERROR - Attempt 1 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:22,334] ERROR - Attempt 2 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:24,492] ERROR - Attempt 3 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:28,599] ERROR - Attempt 4 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:36,767] ERROR - Attempt 5 failed: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:36,768] ERROR - ERROR: 429 Client Error: Too Many Requests for url: https://query2.finance.yahoo.com/v1/finance/search?q=Apple+Inc.&quotes_count=1&country=United+States
+[2025-05-12 15:09:36,772] INFO - 127.0.0.1 - - [12/May/2025 15:09:36] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 15:11:40,871] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 15:11:42,367] INFO -  * Restarting with stat
+[2025-05-12 15:11:57,308] WARNING -  * Debugger is active!
+[2025-05-12 15:11:57,310] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:41:15,176] INFO - ============================================================
+[2025-05-12 16:41:15,176] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 16:41:15,176] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 16:41:15,666] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 16:41:15,666] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 16:41:17,338] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:41:17,362] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 16:41:17,362] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 16:41:17,608] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 16:41:17,608] INFO - Step 5: Splitting document and storing in pgvector...
+[2025-05-12 16:41:21,981] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 16:41:32,672] INFO - Step 5 Complete: Document stored in pgvector.
+[2025-05-12 16:41:32,672] INFO - Step 6: Running agentic analysis using GPT-4...
+[2025-05-12 16:41:32,675] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 16:41:35,674] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:41:38,898] ERROR - ERROR: Too Many Requests. Rate limited. Try after a while.
+[2025-05-12 16:41:38,909] INFO - 127.0.0.1 - - [12/May/2025 16:41:38] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 16:45:55,298] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 16:45:56,245] INFO -  * Restarting with stat
+[2025-05-12 16:46:13,097] WARNING -  * Debugger is active!
+[2025-05-12 16:46:13,104] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:46:53,266] INFO - ============================================================
+[2025-05-12 16:46:53,266] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 16:46:53,266] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 16:46:53,836] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 16:46:53,837] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 16:46:55,552] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:46:55,581] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 16:46:55,581] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 16:46:55,892] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 16:46:56,903] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 16:46:57,074] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 16:46:57,074] INFO - Step 5: Splitting document and storing in pgvector...
+[2025-05-12 16:46:58,272] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 16:47:10,707] INFO - Step 5 Complete: Document stored in pgvector.
+[2025-05-12 16:47:10,713] INFO - Step 6: Running agentic analysis using GPT-4...
+[2025-05-12 16:47:10,713] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 16:47:13,141] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:47:15,037] ERROR - ERROR: Too Many Requests. Rate limited. Try after a while.
+[2025-05-12 16:47:15,053] INFO - 127.0.0.1 - - [12/May/2025 16:47:15] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 16:49:18,748] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 16:49:19,792] INFO -  * Restarting with stat
+[2025-05-12 16:49:37,691] WARNING -  * Debugger is active!
+[2025-05-12 16:49:37,704] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:50:29,475] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 16:50:31,181] INFO -  * Restarting with stat
+[2025-05-12 16:50:50,215] WARNING -  * Debugger is active!
+[2025-05-12 16:50:50,221] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:50:59,585] INFO - ============================================================
+[2025-05-12 16:50:59,585] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 16:50:59,585] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 16:51:00,127] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 16:51:00,127] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 16:51:01,770] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:51:01,808] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 16:51:01,808] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 16:51:03,872] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:51:06,296] ERROR - ERROR: Too Many Requests. Rate limited. Try after a while.
+[2025-05-12 16:51:06,296] INFO - 127.0.0.1 - - [12/May/2025 16:51:06] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 16:51:50,957] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 16:51:51,964] INFO -  * Restarting with stat
+[2025-05-12 16:52:07,939] WARNING -  * Debugger is active!
+[2025-05-12 16:52:07,948] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:52:19,867] INFO -  * Detected change in 'C:\\Users\\SR76875\\Documents\\SmartAdvisor-GenAI\\Backend\\upload.py', reloading
+[2025-05-12 16:52:21,625] INFO -  * Restarting with stat
+[2025-05-12 16:52:42,646] WARNING -  * Debugger is active!
+[2025-05-12 16:52:42,655] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 16:56:57,634] INFO - ============================================================
+[2025-05-12 16:56:57,635] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 16:56:57,635] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 16:56:58,435] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 16:56:58,435] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 16:57:00,301] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:57:00,349] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 16:57:01,355] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 16:57:02,577] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 16:57:02,578] INFO - Step 5: Splitting document and storing in pgvector...
+[2025-05-12 16:57:03,811] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 16:57:13,849] INFO - Step 5 Complete: Document stored in pgvector.
+[2025-05-12 16:57:13,849] INFO - Step 6: Running agentic analysis using GPT-4...
+[2025-05-12 16:57:13,849] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 16:57:15,789] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 16:57:18,284] ERROR - ERROR: Too Many Requests. Rate limited. Try after a while.
+[2025-05-12 16:57:18,286] INFO - 127.0.0.1 - - [12/May/2025 16:57:18] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-05-12 16:59:27,720] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-05-12 16:59:27,720] INFO - [33mPress CTRL+C to quit[0m
+[2025-05-12 16:59:27,724] INFO -  * Restarting with stat
+[2025-05-12 16:59:39,225] WARNING -  * Debugger is active!
+[2025-05-12 16:59:39,225] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 17:00:30,380] INFO - ============================================================
+[2025-05-12 17:00:30,381] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 17:00:30,381] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 17:00:30,916] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 17:00:30,917] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 17:00:32,699] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:00:32,731] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 17:00:33,733] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 17:00:33,898] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 17:00:33,898] INFO - Step 5: Splitting document and storing in pgvector...
+[2025-05-12 17:00:35,250] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 17:00:43,319] INFO - Step 5 Complete: Document stored in pgvector.
+[2025-05-12 17:00:43,319] INFO - Step 6: Running agentic analysis using GPT-4...
+[2025-05-12 17:00:43,319] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 17:00:45,655] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:01:00,036] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:01:00,036] INFO - Fetched news for Apple Inc.: {'input': 'Get the latest news about Apple Inc..', 'output': 'The latest news about Apple Inc. includes a report that Apple is considering increasing the prices of its next iPhone lineup, potentially without explicitly citing tariffs as the reason. Additionally, there is an analysis on whether Apple Inc. is the best stock to buy according to Jim Simons’ Renaissance Technologies.'}
+[2025-05-12 17:01:08,891] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:01:09,772] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 17:01:14,948] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:01:15,159] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 429 Too Many Requests"
+[2025-05-12 17:01:15,159] INFO - Retrying request to /chat/completions in 18.000000 seconds
+[2025-05-12 17:01:41,020] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:01:41,027] INFO - Step 6 Complete: Analysis complete.
+[2025-05-12 17:01:44,849] INFO - Analysis result stored in the database.
+[2025-05-12 17:01:44,851] INFO - Analysis complete.
+[2025-05-12 17:01:44,855] INFO - 127.0.0.1 - - [12/May/2025 17:01:44] "POST /upload HTTP/1.1" 200 -
+[2025-05-12 17:02:20,672] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:02:20,679] INFO - 127.0.0.1 - - [12/May/2025 17:02:20] "GET /api/stock_sentiment?symbol=AAPL&time_range=1m HTTP/1.1" 200 -
+[2025-05-12 17:02:26,723] INFO - 127.0.0.1 - - [12/May/2025 17:02:26] "GET /query_analysis?ticker=AAPL HTTP/1.1" 200 -
+[2025-05-12 17:32:15,323] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-05-12 17:32:15,324] INFO - [33mPress CTRL+C to quit[0m
+[2025-05-12 17:32:15,328] INFO -  * Restarting with stat
+[2025-05-12 17:32:32,859] WARNING -  * Debugger is active!
+[2025-05-12 17:32:32,867] INFO -  * Debugger PIN: 225-262-084
+[2025-05-12 17:32:53,914] INFO - ============================================================
+[2025-05-12 17:32:53,917] INFO - File Uploaded: FY25_Q1_Consolidated_Financial_Statements.pdf
+[2025-05-12 17:32:53,917] INFO - Step 0: Loading document and extracting text...
+[2025-05-12 17:32:54,447] INFO - Step 1 Complete: Text extracted.
+[2025-05-12 17:32:54,447] INFO - Step 2: Extracting company name using GPT-4...
+[2025-05-12 17:32:56,514] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:32:56,543] INFO - Step 2 Complete: Company name extracted -> Apple Inc.
+[2025-05-12 17:32:57,556] INFO - Fetching ticker for company: Apple Inc....
+[2025-05-12 17:32:57,753] INFO - Ticker found for Apple Inc.: AAPL
+[2025-05-12 17:32:57,753] INFO - Step 5: Splitting document and storing in pgvector...
+[2025-05-12 17:32:59,204] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 17:33:08,897] INFO - Step 5 Complete: Document stored in pgvector.
+[2025-05-12 17:33:08,897] INFO - Step 6: Running agentic analysis using GPT-4...
+[2025-05-12 17:33:08,897] INFO - Fetching latest news for company: Apple Inc. using LangChain agent...
+[2025-05-12 17:33:11,185] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:33:27,202] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:33:27,209] INFO - Fetched news for Apple Inc.: {'input': 'Get the latest news about Apple Inc..', 'output': 'The latest news about Apple Inc. includes a consideration of a price increase for the next iPhone lineup, potentially due to tariffs, and a discussion on whether Apple Inc. is the best stock to buy according to Jim Simons’ Renaissance Technologies.'}
+[2025-05-12 17:33:38,164] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:33:39,076] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15 "HTTP/1.1 200 OK"
+[2025-05-12 17:33:49,211] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:33:49,410] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 429 Too Many Requests"
+[2025-05-12 17:33:49,411] INFO - Retrying request to /chat/completions in 7.000000 seconds
+[2025-05-12 17:34:05,869] INFO - HTTP Request: POST https://opneai-gpt-4o.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+[2025-05-12 17:34:05,872] INFO - Step 6 Complete: Analysis complete.
+[2025-05-12 17:34:17,389] INFO - Analysis result stored in the database.
+[2025-05-12 17:34:17,391] INFO - Analysis complete.
+[2025-05-12 17:34:17,393] INFO - 127.0.0.1 - - [12/May/2025 17:34:17] "POST /upload HTTP/1.1" 200 -
